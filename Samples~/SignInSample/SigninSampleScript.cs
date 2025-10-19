@@ -112,7 +112,8 @@ namespace SignInSample
             }
             else
             {
-                AddStatusText("Welcome: " + task.Result.DisplayName + "!");
+                GoogleSignInUser signedGoogleUser = task.Result;
+                AddStatusText("Welcome: " + signedGoogleUser.DisplayName + "!");
             }
         }
 
