@@ -62,7 +62,7 @@ namespace SignInSample
             // to modify the configuration or use a separate one for games, 
             // but for a basic sign-in with your default config, this is sufficient.
 
-            GoogleSignIn.DefaultInstance.SignIn().ContinueWith(OnAuthenticationFinished);
+            GoogleSignIn.DefaultInstance.SignIn().ContinueWith(OnAuthenticationFinished, TaskScheduler.FromCurrentSynchronizationContext());
         }
 
         public void OnSignInSilently()
@@ -72,7 +72,7 @@ namespace SignInSample
             //GoogleSignIn.Configuration.RequestIdToken = true;
             AddStatusText("Calling SignIn Silently");
 
-            GoogleSignIn.DefaultInstance.SignInSilently().ContinueWith(OnAuthenticationFinished);
+            GoogleSignIn.DefaultInstance.SignInSilently().ContinueWith(OnAuthenticationFinished, TaskScheduler.FromCurrentSynchronizationContext());
         }
 
         public void OnSignOut()
@@ -128,7 +128,7 @@ namespace SignInSample
         //    AddStatusText("Calling Games SignIn");
 
         //    GoogleSignIn.DefaultInstance.SignIn().ContinueWith(
-        //      OnAuthenticationFinished);
+        //      OnAuthenticationFinished, TaskScheduler.FromCurrentSynchronizationContext());
         //}
 
         private List<string> messages = new List<string>();
